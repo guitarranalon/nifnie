@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="4.0">
+  <servlet>
+    <description></description>
+    <display-name>DniServlet</display-name>
+    <servlet-name>DniServlet</servlet-name>
+    <servlet-class>dni.DniServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DniServlet</servlet-name>
+    <url-pattern>/DniServlet</url-pattern>
+  </servlet-mapping>
+  <display-name>aaa</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>NieServlet</display-name>
+    <servlet-name>NieServlet</servlet-name>
+    <servlet-class>nie.NieServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NieServlet</servlet-name>
+    <url-pattern>/NieServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
