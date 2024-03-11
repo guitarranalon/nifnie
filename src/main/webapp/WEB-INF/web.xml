@@ -29,4 +29,14 @@
     <servlet-name>NieServlet</servlet-name>
     <url-pattern>/NieServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PitagorasServlet</display-name>
+    <servlet-name>PitagorasServlet</servlet-name>
+    <servlet-class>pitagoras.PitagorasServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PitagorasServlet</servlet-name>
+    <url-pattern>/PitagorasServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
