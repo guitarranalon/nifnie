@@ -1,5 +1,6 @@
 package pitagoras;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -49,8 +50,14 @@ public class PitagorasServlet extends HttpServlet {
 		
 		c1 = Math.sqrt(Math.pow(hypo, 2) - Math.pow(c2, 2));
 		
-		response.getWriter().append("c1: " + c1);
-		response.getWriter().append("c2: " + c2);
-		response.getWriter().append("hypo: " + hypo);
+		// response.getWriter().append("c1: " + c1);
+		// response.getWriter().append("c2: " + c2);
+		// response.getWriter().append("hypo: " + hypo);
+		
+		request.setAttribute("c1", c1);
+		request.setAttribute("c2", c2);
+		request.setAttribute("hypo", hypo);
+		
+		request.getRequestDispatcher("pitagoras.jsp").forward(request, response);
 	}
 }
