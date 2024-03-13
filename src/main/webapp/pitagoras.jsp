@@ -13,10 +13,14 @@
 	<p>Introduce 2 valores y calcularemos el restante.</p>
 	
 
-    <c:if test="${not empty c1 and c1 ne '' and not empty c2 and c2 ne '' and c1 eq c2}">
+    <c:if test="${not empty c1 and c1 ne '' and not empty c2 and c2 ne '' and c1 eq c2 and c1 ne Double.NaN}">
         <p>Los ángulos de este triángulo serán de 45º, 45º y 90º</p>
+        <p>c1: ${c1}</p>
     </c:if>
-
+	
+	<c:if test="${error}">
+		<p>Error: La hipotenusa no puede ser menor que el cateto.</p>
+	</c:if>
 
 	<form method="get" action="PitagorasServlet">
 		<div>

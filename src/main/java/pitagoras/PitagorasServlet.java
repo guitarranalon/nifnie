@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class PitagorasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,6 +32,7 @@ public class PitagorasServlet extends HttpServlet {
 		Double c1 = c1Param != null && !c1Param.isEmpty() ? Float.parseFloat(c1Param) : 0d;
 		Double c2 = c2Param != null && !c2Param.isEmpty() ? Float.parseFloat(c2Param) : 0d;
 		Double hypo = hypotenuseParam != null && !hypotenuseParam.isEmpty() ? Float.parseFloat(hypotenuseParam) : 0d;
+		boolean error = false;
 		
 		if (((c1Param == null || c1Param.isEmpty()) && (c2Param == null || c2Param.isEmpty())) ||
 				((c1Param == null || c1Param.isEmpty()) && (hypotenuseParam == null || hypotenuseParam.isEmpty())) ||
@@ -45,19 +46,28 @@ public class PitagorasServlet extends HttpServlet {
 		}
 		
 		if (c1Param != null && !c1Param.isEmpty() && hypotenuseParam != null && !hypotenuseParam.isEmpty()) {
+			error = sendError(request, c1, hypo);
 			c2 = Math.sqrt(Math.pow(hypo, 2) - Math.pow(c1, 2));
 		}
 		
+		error = sendError(request, c2, hypo);
 		c1 = Math.sqrt(Math.pow(hypo, 2) - Math.pow(c2, 2));
 		
-		// response.getWriter().append("c1: " + c1);
-		// response.getWriter().append("c2: " + c2);
-		// response.getWriter().append("hypo: " + hypo);
-		
-		request.setAttribute("c1", c1);
-		request.setAttribute("c2", c2);
-		request.setAttribute("hypo", hypo);
+		if (!error) {
+			request.setAttribute("c1", c1);
+			request.setAttribute("c2", c2);
+			request.setAttribute("hypo", hypo);
+		}
 		
 		request.getRequestDispatcher("pitagoras.jsp").forward(request, response);
+	}
+
+	private boolean sendError(HttpServletRequest request, Double c, Double hypo) {
+		if (c >= hypo) {
+			request.setAttribute("error", true);
+			return true;
+		}
+		
+		return false;
 	}
 }
